@@ -28,13 +28,13 @@ app.listen(PORT, (err, res) =>
 app.use(routes)
 
 //default api route 
-app.use('/', async (req, res) =>{
-        res.json({
-            code: 200,
-            message: 'Success hit'
-        })
+// app.use('/', async (req, res) =>{
+//         res.json({
+//             code: 200,
+//             message: 'Success hit'
+//         })
                         
-})
+// })
 
 
 
