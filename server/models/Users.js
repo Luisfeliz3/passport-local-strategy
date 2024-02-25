@@ -17,10 +17,7 @@ const UserSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: true,
-	},
-	currentProjects: [
-		Object
-	],
+	}
 });
 
 //hashing a password before saving it to the database
@@ -40,4 +37,4 @@ UserSchema.methods.validPassword = function (password) {
 	return bcrypt.compareSync(password, this.password);
 };
 const Users = mongoose.model("Users", UserSchema);
-export default Users;
+export default {Users};

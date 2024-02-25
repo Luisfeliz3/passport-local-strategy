@@ -1,7 +1,8 @@
 import passport from "passport";
- import {Strategy as LocalStrategy  }  from "passport-local";
+import {Strategy as LocalStrategy  }  from "passport-local";
 
-import db from "../models/index.js";
+
+import db from "../models/users.js";
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
 passport.use(
@@ -42,6 +43,7 @@ passport.serializeUser((user, cb) => {
 
 passport.deserializeUser((obj, cb) => {
   cb(null, obj);
+  return done (null, user.id)
 });
 
 // Exporting our configured passport
