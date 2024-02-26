@@ -31,20 +31,26 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use(passport.initialize());
-app.use(passport.session());
-// We need to use sessions to keep track of our user's login status
-app.use(session(
 
-    {
-		secret: "keyboard cat",
-		name: "stats",
-		resave: false,
-		saveUninitialized: true,
-		cookie: {
-			expires: 1000 * 60 * 60 * 24,
-		},
-	}
-));
+
+
+
+/**
+ * 
+ * TypeError: req.session.regenerate is not a function
+ * The maintainer suggests using the latest v0.5.0 until a fix is pushed out. Use:
+ * npm uninstall passport
+ * npm install passport@0.5
+ * This fixed the error 
+ */
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+  }))
+// We need to use sessions to keep track of our user's login status
+
 
 
 
